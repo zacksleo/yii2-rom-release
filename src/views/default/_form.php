@@ -41,7 +41,7 @@ use zacksleo\yii2\romrelease\Module;
     ) ?>
     <?= $form->field($model, 'description')->textarea(['maxlength' => true]) ?>
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('yii',$model->isNewRecord ? 'Create' : 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton(Yii::t('yii', $model->isNewRecord ? 'Create' : 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 </div>
