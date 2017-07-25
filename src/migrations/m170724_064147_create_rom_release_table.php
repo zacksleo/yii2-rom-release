@@ -19,6 +19,7 @@ class m170724_064147_create_rom_release_table extends Migration
         $this->createTable('{{%rom_release}}', [
             'id' => $this->primaryKey(),
             'version' => $this->string()->notNull()->comment('版本号'),
+            'version_code' => $this->string()->null()->comment('版本代号'),
             'is_forced' => $this->boolean()->notNull()->defaultValue(1)->comment('强制更新'),
             'url' => $this->string()->notNull()->comment('下载地址'),
             'md5' => $this->string()->notNull()->comment('MD5'),

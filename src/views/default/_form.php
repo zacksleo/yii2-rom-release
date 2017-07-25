@@ -14,6 +14,7 @@ use zacksleo\yii2\romrelease\Module;
         'options' => ['enctype' => 'multipart/form-data']
     ]); ?>
     <?= $form->field($model, 'version')->textInput() ?>
+    <?= $form->field($model, 'version_code')->textInput() ?>
     <?= $form->field($model, 'is_forced')->inline(true)->textInput()->radioList([
         '0' => Yii::t('yii', 'No'),
         '1' => Yii::t('yii', 'Yes'),

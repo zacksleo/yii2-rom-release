@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'version',
+            'version_code',
             [
                 'attribute' => 'status',
                 'value' => function ($model) {

@@ -13,6 +13,7 @@ use zacksleo\yii2\romrelease\behaviors\UploadBehavior;
  *
  * @property integer $id
  * @property integer $version
+ * @property integer $version_code
  * @property integer $is_forced
  * @property string $url
  * @property string $md5
@@ -47,6 +48,7 @@ class RomRelease extends \yii\db\ActiveRecord
             [['is_forced', 'status'], 'default', 'value' => 1],
             [['description', 'version'], 'string', 'max' => 255],
             ['md5', 'string', 'max' => 255, 'on' => ['save']],
+            ['version_code', 'safe'],
             [['url'], 'file',
                 //'extensions' => 'apk',
                 'skipOnEmpty' => true,
@@ -66,6 +68,7 @@ class RomRelease extends \yii\db\ActiveRecord
         return [
             'id' => Module::t('romrelease', 'ID'),
             'version' => Module::t('romrelease', 'version'),
+            'version_code' => Module::t('romrelease', 'version code'),
             'is_forced' => Module::t('romrelease', 'is forced'),
             'url' => Module::t('romrelease', 'url'),
             'md5' => Module::t('romrelease', 'MD5'),

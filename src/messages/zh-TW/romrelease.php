@@ -8,6 +8,7 @@ return [
     'Yes' => '是',
     'No' => '否',
     'version' => '版本號',
+    'version code' => '版本代號',
     'is forced' => '強制更新',
     'url' => '下載地址',
     'status' => '狀態',

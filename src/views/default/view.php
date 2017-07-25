@@ -25,6 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'version',
+            'version_code',
             [
                 'attribute' => 'is_forced',
                 'value' => $model->is_forced == 1 ? '是' : '否',
