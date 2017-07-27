@@ -15,5 +15,6 @@ return [
     'description' => '发布说明',
     'created at' => '创建时间',
     'updated at' => '更新时间',
-    'File'=>'文件',
+    'File' => '文件',
+    'upload rom here' => '在此上传固件',
 ];

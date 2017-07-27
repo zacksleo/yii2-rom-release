@@ -34,7 +34,7 @@ use zacksleo\yii2\romrelease\Module;
             'initialCaption' => $model->url,
             'overwriteInitial' => false,
         ]
-    ])->hint('在此上传APK文件'); ?>
+    ])->hint(Module::t('romrelease', 'upload rom here')); ?>
     <?= $form->field($model, 'status')->inline(true)->textInput()->radioList(
         RomRelease::getStatusList(), [
             'default' => 1

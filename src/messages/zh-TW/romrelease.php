@@ -16,4 +16,5 @@ return [
     'created at' => '創建時間',
     'updated at' => '更新時間',
     'File' => '文件',
+    'upload rom here' => '在此上傳固件',
 ];
