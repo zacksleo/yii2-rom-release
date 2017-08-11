@@ -9,3 +9,4 @@ Yii::setAlias('@tests', __DIR__);
 Yii::setAlias('@zacksleo/yii2/romrelease/messages', dirname(__DIR__) . '/src/messages');
 Yii::setAlias('@zacksleo/yii2/romrelease/migrations', dirname(__DIR__) . '/src/migrations');
 Yii::setAlias('@frontend/web/uploads/galleries/romrelease/test.png', dirname(__DIR__) . '/tests/data/test.png');
+Yii::setAlias('@frontend/web/uploads/apps', dirname(__DIR__) . '/tests/data/test.png');

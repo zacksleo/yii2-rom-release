@@ -76,25 +76,34 @@ class RomReleaseTest extends TestCase
     }
 
     /**
-    * @brief 添加
+    * @brief 测试添加
     *
     * @return
     */
-  //  public function testAdd()
-  //  {
-  //      $this->model->setAttributes([
-  //          'version' => '1.0',
-  //          'version_code' => '版本代号',
-  //          'is_forced' => 1,
-  //          'url' => 'test.png',
-  //          'md5' => 'MD5',
-  //          'status' => 1,
-  //          'description' => '发布说明',
-  //          'created_at' => time(),
-  //          'updated_at' => time(),
-  //      ]);
-  //      $this->assertTrue($this->model->save());
-  //  }
+    public function testAdd()
+    {
+        $this->model->setAttributes([
+            'version' => '1.0',
+            'version_code' => '版本代号',
+            'is_forced' => 1,
+            'file' => 
+                 [
+                    'Document[file]' => [
+                    'name' => 'test.png',
+                    'type' => 'text/plain',
+                    'size' => 12,
+                    'tmp_name' => __DIR__ . '/data/test.png',
+                    'error' => 0,
+                  ]],
+            'url' => 'test.png',
+            'md5' => 'MD5',
+            'status' => 1,
+            'description' => '发布说明',
+            'created_at' => time(),
+            'updated_at' => time(),
+        ]);
+        $this->assertTrue($this->model->save());
+    }
 
  //   public function testUpdate(){
  //       $this->model->setAttributes([
@@ -111,4 +120,43 @@ class RomReleaseTest extends TestCase
  //       ]);
  //       $this->assertTrue($this->model->save());
  //   }
+
+    /**
+    * @brief 测试查询
+    *
+    * @return 
+    */
+    public function testFind(){
+        $dataProvider = new ActiveDataProvider([
+                    'query' => RomRelease::find(),
+        ]);
+        $this->assertTrue($dataProvider instanceof ActiveDataProvider);
+        $hospital = $dataProvider->getModels();
+        $this->assertEquals('1.0', $hospital['0']['version']);
+    }
+
+    /**
+    * @brief 测试单个查询
+    *
+    * @return 
+    */
+    public function testView(){
+         $view=$this->model->findOne(1);
+         $this->assertEquals('1', $view['id']);
+    }
+
+    /**
+    * @brief 测试删除
+    *
+    * @return 
+    */
+    public function testDelete(){
+        $this->assertEquals('1', $this->model->findOne(1)->delete());
+    }
+
+    public static function setUpBeforeClass()
+    {
+                parent::setUpBeforeClass();
+                    
+    }
 }
