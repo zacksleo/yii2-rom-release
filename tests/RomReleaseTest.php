@@ -153,11 +153,6 @@ class RomReleaseTest extends TestCase
         $this->assertEquals('1', $this->model->findOne(1)->delete());
     }
 
-    public function testFields()
-    {
-       $fileds = RomRelease::fields(); 
-    }
-    
     public function testGetStatusList()
     {
         $status = RomRelease::getStatusList();
