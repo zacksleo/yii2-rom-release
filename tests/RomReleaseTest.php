@@ -9,6 +9,7 @@ namespace zacksleo\yii2\romrelease\tests;
 
 use zacksleo\yii2\romrelease\models\RomRelease;
 use yii\data\ActiveDataProvider;
+use yii\web\UploadedFile;
 use Yii;
 
 class RomReleaseTest extends TestCase
@@ -82,51 +83,41 @@ class RomReleaseTest extends TestCase
     */
     public function testAdd()
     {
-        $this->model->setAttributes([
-            'version' => '1.0',
-            'version_code' => '版本代号',
-            'is_forced' => 1,
-            'file' => 
-                 [
-                    'Document[file]' => [
-                    'name' => 'test.png',
-                    'type' => 'text/plain',
-                    'size' => 12,
-                    'tmp_name' => __DIR__ . '/data/test.png',
-                    'error' => 0,
-                  ]],
-            'url' => 'test.png',
-            'md5' => 'MD5',
-            'status' => 1,
-            'description' => '发布说明',
-            'created_at' => time(),
-            'updated_at' => time(),
-        ]);
+        $this->model->version='1.0';
+        $this->model->version_code='版本代号';
+        $this->model->is_forced=1;
+        $this->model->url=UploadedFile::getInstanceByName('Document[file]');
+        $this->model->status=1;
+        $this->model->description='发布说明';
+        $this->model->md5='324234234234';
+        $this->model->created_at=time();
+        $this->model->updated_at=time();
         $this->assertTrue($this->model->save());
     }
 
- //   public function testUpdate(){
- //       $this->model->setAttributes([
- //           'id'=>1,
- //           'version' => '1.0',
- //           'version_code' => '版本代号',
- //           'is_forced' => 1,
- //           'url' => 'test.apk',
- //           'md5' => 'MD5',
- //           'status' => 1,
- //           'description' => '发布说明',
- //           'created_at' => time(),
- //           'updated_at' => time(),
- //       ]);
- //       $this->assertTrue($this->model->save());
- //   }
+    public function testUpdate()
+    {
+        $this->model->setScenario('update');
+        $this->model->id=1;
+        $this->model->version='2.0';
+        $this->model->version_code='版本代号2';
+        $this->model->is_forced=1;
+        $this->model->url=UploadedFile::getInstanceByName('Document[file]');
+        $this->model->status=1;
+        $this->model->description='发布说明';
+        $this->model->md5='324234234234';
+        $this->model->created_at=time();
+        $this->model->updated_at=time();
+        $this->assertTrue($this->model::findOne(1)->save());
+    }
 
     /**
     * @brief 测试查询
     *
-    * @return 
+    * @return
     */
-    public function testFind(){
+    public function testFind()
+    {
         $dataProvider = new ActiveDataProvider([
                     'query' => RomRelease::find(),
         ]);
@@ -138,25 +129,42 @@ class RomReleaseTest extends TestCase
     /**
     * @brief 测试单个查询
     *
-    * @return 
+    * @return
     */
-    public function testView(){
-         $view=$this->model->findOne(1);
-         $this->assertEquals('1', $view['id']);
+    public function testView()
+    {
+        $view=$this->model->findOne(1);
+        $this->assertEquals('1', $view['id']);
     }
 
     /**
     * @brief 测试删除
     *
-    * @return 
+    * @return
     */
-    public function testDelete(){
+    public function testDelete()
+    {
         $this->assertEquals('1', $this->model->findOne(1)->delete());
     }
-
+    
     public static function setUpBeforeClass()
     {
-                parent::setUpBeforeClass();
-                    
+        parent::setUpBeforeClass();
+        $_FILES = [
+            'Document[file]' => [
+                'name' => 'test-file.txt',
+                'type' => 'text/plain',
+                'size' => 12,
+                'tmp_name' => __DIR__ . '/data/test-file.txt',
+                'error' => 0,
+            ],
+            'Document[file-other]' => [
+                'name' => 'test-file-other.txt',
+                'type' => 'text/plain',
+                'size' => 12,
+                'tmp_name' => __DIR__ . '/data/test-file-other.txt',
+                'error' => 0,
+            ],
+        ];
     }
 }
