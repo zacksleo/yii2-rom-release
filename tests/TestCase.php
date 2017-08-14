@@ -46,7 +46,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
                     'class' => 'yii\db\Connection',
                     'dsn' => 'mysql:host=localhost:3306;dbname=test',
                     'username'=> 'root',
-                    'password'=> '',
+                    'password'=> '206065',
                     'tablePrefix' => 'tb_'
                 ],
                 'i18n' => [
@@ -76,7 +76,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
                     'class' => 'yii\db\Connection',
                     'dsn' => 'mysql:host=localhost:3306;dbname=test',
                     'username'=> 'root',
-                    'password'=> '',
+                    'password'=> '206065',
                     'tablePrefix' => 'tb_'
                 ],
                 'i18n' => [
@@ -88,8 +88,8 @@ class TestCase extends \PHPUnit_Framework_TestCase
                 ],
             ],
             'modules' => [
-                'post' => [
-                    'class' => 'zacksleo\yii2\post\Module'
+                'romrelease' => [
+                    'class' => 'zacksleo\yii2\romrelease\Module'
                 ]
             ]
         ], $config));
