@@ -152,7 +152,13 @@ class RomReleaseTest extends TestCase
     {
         $this->assertEquals('1', $this->model->findOne(1)->delete());
     }
-    
+
+    public function testGetStatusList()
+    {
+        $status = RomRelease::getStatusList();
+        $this->assertTrue(count($status) == 2);
+    }
+
     public static function setUpBeforeClass()
     {
         parent::setUpBeforeClass();
