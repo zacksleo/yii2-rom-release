@@ -88,8 +88,8 @@ class TestCase extends \PHPUnit_Framework_TestCase
                 ],
             ],
             'modules' => [
-                'post' => [
-                    'class' => 'zacksleo\yii2\post\Module'
+                'romrelease' => [
+                    'class' => 'zacksleo\yii2\romrelease\Module'
                 ]
             ]
         ], $config));
