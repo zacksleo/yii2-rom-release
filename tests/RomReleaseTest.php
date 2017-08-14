@@ -16,8 +16,8 @@ class RomReleaseTest extends TestCase
 {
     public function testMdule()
     {
-      $module=Yii::$app->getModule('romrelease'); 
-      $module->init();
+        $module=Yii::$app->getModule('romrelease');
+        $module->init();
     }
 
     public function setUp()
