@@ -24,18 +24,7 @@ class RomReleaseTest extends TestCase
     {
         parent::setUp();
         $this->model=new RomRelease();
-        $db = Yii::$app->getDb();
-        $db->createCommand()->insert('tb_rom_release', [
-            'version' => '1.0',
-            'version_code' => '版本代号',
-            'is_forced' => 1,
-            'url' => 'test.png',
-            'md5' => 'MD5',
-            'status' => 1,
-            'description' => '发布说明',
-            'created_at' => time(),
-            'updated_at' => time(),
-        ])->execute();
+
     }
 
     protected function tearDown()
@@ -152,6 +141,7 @@ class RomReleaseTest extends TestCase
     {
         $this->assertEquals('1', $this->model->findOne(1)->delete());
     }
+
 
     public function testGetStatusList()
     {
