@@ -5,6 +5,7 @@
  * Date: 2017/8/11
  * Time: 上午11:15
  */
+
 namespace zacksleo\yii2\romrelease\tests;
 
 use zacksleo\yii2\romrelease\models\RomRelease;
@@ -16,15 +17,14 @@ class RomReleaseTest extends TestCase
 {
     public function testMdule()
     {
-        $module=Yii::$app->getModule('romrelease');
+        $module = Yii::$app->getModule('romrelease');
         $module->init();
     }
 
     public function setUp()
     {
         parent::setUp();
-        $this->model=new RomRelease();
-
+        $this->model = new RomRelease();
     }
 
     protected function tearDown()
@@ -72,49 +72,49 @@ class RomReleaseTest extends TestCase
     }
 
     /**
-    * @brief 测试添加
-    *
-    * @return
-    */
+     * @brief 测试添加
+     *
+     * @return
+     */
     public function testAdd()
     {
-        $this->model->version='1.0';
-        $this->model->version_code='版本代号';
-        $this->model->is_forced=1;
-        $this->model->url=UploadedFile::getInstanceByName('Document[file]');
-        $this->model->status=1;
-        $this->model->description='发布说明';
-        $this->model->md5='324234234234';
-        $this->model->created_at=time();
-        $this->model->updated_at=time();
+        $this->model->version = '1.0';
+        $this->model->version_code = '版本代号';
+        $this->model->is_forced = 1;
+        $this->model->url = UploadedFile::getInstanceByName('Document[file]');
+        $this->model->status = 1;
+        $this->model->description = '发布说明';
+        $this->model->md5 = '324234234234';
+        $this->model->created_at = time();
+        $this->model->updated_at = time();
         $this->assertTrue($this->model->save());
     }
 
     public function testUpdate()
     {
         $this->model->setScenario('update');
-        $this->model->id=1;
-        $this->model->version='2.0';
-        $this->model->version_code='版本代号2';
-        $this->model->is_forced=1;
-        $this->model->url=UploadedFile::getInstanceByName('Document[file]');
-        $this->model->status=1;
-        $this->model->description='发布说明';
-        $this->model->md5='324234234234';
-        $this->model->created_at=time();
-        $this->model->updated_at=time();
+        $this->model->id = 1;
+        $this->model->version = '2.0';
+        $this->model->version_code = '版本代号2';
+        $this->model->is_forced = 1;
+        $this->model->url = UploadedFile::getInstanceByName('Document[file]');
+        $this->model->status = 1;
+        $this->model->description = '发布说明';
+        $this->model->md5 = '324234234234';
+        $this->model->created_at = time();
+        $this->model->updated_at = time();
         $this->assertTrue($this->model::findOne(1)->save());
     }
 
     /**
-    * @brief 测试查询
-    *
-    * @return
-    */
+     * @brief 测试查询
+     *
+     * @return
+     */
     public function testFind()
     {
         $dataProvider = new ActiveDataProvider([
-                    'query' => RomRelease::find(),
+            'query' => RomRelease::find(),
         ]);
         $this->assertTrue($dataProvider instanceof ActiveDataProvider);
         $hospital = $dataProvider->getModels();
@@ -122,21 +122,21 @@ class RomReleaseTest extends TestCase
     }
 
     /**
-    * @brief 测试单个查询
-    *
-    * @return
-    */
+     * @brief 测试单个查询
+     *
+     * @return
+     */
     public function testView()
     {
-        $view=$this->model->findOne(1);
+        $view = $this->model->findOne(1);
         $this->assertEquals('1', $view['id']);
     }
 
     /**
-    * @brief 测试删除
-    *
-    * @return
-    */
+     * @brief 测试删除
+     *
+     * @return
+     */
     public function testDelete()
     {
         $this->assertEquals('1', $this->model->findOne(1)->delete());

@@ -102,7 +102,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
     protected function destroyTestDbData()
     {
         $db = Yii::$app->getDb();
-        $res = $db->createCommand()->dropTable('tb_rom_release')->execute();
+        $res = $db->createCommand()->dropTable('rom_release')->execute();
     }
 
     protected function createTestDbData()
