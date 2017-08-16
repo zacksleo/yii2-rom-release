@@ -103,7 +103,7 @@ class RomReleaseTest extends TestCase
         $this->model->md5 = '324234234234';
         $this->model->created_at = time();
         $this->model->updated_at = time();
-        $this->assertTrue($this->model::findOne(1)->save());
+        $this->assertTrue(RomRelease::findOne(1)->save());
     }
 
     /**
