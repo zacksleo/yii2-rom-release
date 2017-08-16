@@ -1,4 +1,21 @@
 <?php
+namespace yii\web;
+/**
+ * Mock for the is_uploaded_file() function for web classes.
+ * @return boolean
+ */
+function is_uploaded_file($filename)
+{
+    return file_exists($filename);
+}
+/**
+ * Mock for the move_uploaded_file() function for web classes.
+ * @return boolean
+ */
+function move_uploaded_file($filename, $destination)
+{
+    return copy($filename, $destination);
+}
 namespace zacksleo\yii2\romrelease\tests;
 
 use Yii;
@@ -28,43 +45,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
         $this->destroyApplication();
         unset($this->model);
     }
-    /**
-     * Populates Yii::$app with a new application
-     * The application will be destroyed on tearDown() automatically.
-     *
-     * @param array $config The application configuration, if needed
-     * @param string $appClass name of the application class to create
-     */
-    protected function mockApplication($config = [], $appClass = '\yii\console\Application')
-    {
-        return new $appClass(ArrayHelper::merge([
-            'id' => 'testapp',
-            'basePath' => __DIR__,
-            'vendorPath' => $this->getVendorPath(),
-            'components' => [
-                'db' => [
-                    'class' => 'yii\db\Connection',
-                    'dsn' => 'mysql:host=localhost:3306;dbname=test',
-                    'username'=> 'root',
-                    'password'=> '',
-                    'tablePrefix' => 'tb_'
-                ],
-                'i18n' => [
-                    'translations' => [
-                        '*' => [
-                            'class' => 'yii\i18n\PhpMessageSource',
-                        ]
-                    ]
-                ],
-            ],
-            'modules' => [
-                'post' => [
-                    'class' => 'zacksleo\yii2\post\Module',
-                    'layout' => '@tests/layouts/main'
-                ]
-            ]
-        ], $config));
-    }
+
     protected function mockWebApplication($config = [], $appClass = '\yii\web\Application')
     {
         new $appClass(ArrayHelper::merge([
@@ -76,8 +57,9 @@ class TestCase extends \PHPUnit_Framework_TestCase
                     'class' => 'yii\db\Connection',
                     'dsn' => 'mysql:host=localhost:3306;dbname=test',
                     'username'=> 'root',
-                    'password'=> '',
+                    'password'=> '206065',
                     'tablePrefix' => 'tb_'
+                   //'dsn' => 'sqlite::memory:',
                 ],
                 'i18n' => [
                     'translations' => [
@@ -89,7 +71,8 @@ class TestCase extends \PHPUnit_Framework_TestCase
             ],
             'modules' => [
                 'romrelease' => [
-                    'class' => 'zacksleo\yii2\romrelease\Module'
+                    'class' => 'zacksleo\yii2\romrelease\Module',
+                    'controllerNamespace' => 'zacksleo\yii2\romrelease\tests\controllers'
                 ]
             ]
         ], $config));
@@ -126,11 +109,22 @@ class TestCase extends \PHPUnit_Framework_TestCase
                 'version_code' => 'string(100)' ,
                 'is_forced' =>  'tinyint(1) not null',
                 'url' => 'string(100) not null' ,
-                'md5' => 'string(100) not null' ,
+                'md5' => 'string(100) default null' ,
                 'status' => 'tinyint(1)',
                 'description' => 'text',
                 'created_at' => 'integer(11) not null',
                 'updated_at' => 'integer(11) not null'
+            ])->execute();
+            $db->createCommand()->insert('tb_rom_release', [
+                'version' => '1.0',
+                'version_code' => '版本代号',
+                'is_forced' => 1,
+                'url' => 'test.png',
+                'md5' => 'MD5sdfsdfsdf',
+                'status' => 1,
+                'description' => '发布说明',
+                'created_at' => time(),
+                'updated_at' => time(),
             ])->execute();
         } catch (Exception $e) {
             return;

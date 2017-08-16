@@ -22,7 +22,7 @@ class m170724_064147_create_rom_release_table extends Migration
             'version_code' => $this->string()->null()->comment('版本代号'),
             'is_forced' => $this->boolean()->notNull()->defaultValue(1)->comment('强制更新'),
             'url' => $this->string()->notNull()->comment('下载地址'),
-            'md5' => $this->string()->notNull()->comment('MD5'),
+            'md5' => $this->string()->notNull()->defaultValue('')->comment('MD5'),
             'status' => $this->smallInteger(1)->notNull()->defaultValue(0)->comment('状态'),
             'description' => $this->string()->notNull()->comment('发布说明'),
             'created_at' => $this->integer()->notNull()->comment('创建时间'),
