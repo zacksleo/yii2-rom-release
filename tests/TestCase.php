@@ -1,5 +1,7 @@
 <?php
+
 namespace yii\web;
+
 /**
  * Mock for the is_uploaded_file() function for web classes.
  * @return boolean
@@ -8,6 +10,7 @@ function is_uploaded_file($filename)
 {
     return file_exists($filename);
 }
+
 /**
  * Mock for the move_uploaded_file() function for web classes.
  * @return boolean
@@ -16,6 +19,7 @@ function move_uploaded_file($filename, $destination)
 {
     return copy($filename, $destination);
 }
+
 namespace zacksleo\yii2\romrelease\tests;
 
 use Yii;
@@ -31,14 +35,16 @@ class TestCase extends \PHPUnit_Framework_TestCase
     protected $model;
     protected $faker;
     protected $generatestring;
+
     protected function setUp()
     {
         parent::setUp();
         $this->mockWebApplication();
         $this->createTestDbData();
-        $this->faker=Factory::create('zh_CN');     //伪数据生成器
-        $this->generatestring=new generatestring;  //string生成器
+        $this->faker = Factory::create('zh_CN');     //伪数据生成器
+        $this->generatestring = new generatestring;  //string生成器
     }
+
     protected function tearDown()
     {
         $this->destroyTestDbData();
@@ -55,11 +61,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
             'components' => [
                 'db' => [
                     'class' => 'yii\db\Connection',
-                    'dsn' => 'mysql:host=localhost:3306;dbname=test',
-                    'username'=> 'root',
-                    'password'=> '206065',
-                    'tablePrefix' => 'tb_'
-                   //'dsn' => 'sqlite::memory:',
+                    'dsn' => 'sqlite::memory:',
                 ],
                 'i18n' => [
                     'translations' => [
@@ -77,6 +79,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
             ]
         ], $config));
     }
+
     /**
      * @return string vendor path
      */
@@ -84,6 +87,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
     {
         return dirname(__DIR__) . '/vendor';
     }
+
     /**
      * Destroys application in Yii::$app by setting it to null.
      */
@@ -94,28 +98,30 @@ class TestCase extends \PHPUnit_Framework_TestCase
         }
         \Yii::$app = null;
     }
+
     protected function destroyTestDbData()
     {
         $db = Yii::$app->getDb();
         $res = $db->createCommand()->dropTable('tb_rom_release')->execute();
     }
+
     protected function createTestDbData()
     {
         $db = Yii::$app->getDb();
         try {
-            $db->createCommand()->createTable('tb_rom_release', [
+            $db->createCommand()->createTable('rom_release', [
                 'id' => 'pk',
-                'version' => 'string(100) not null' ,
-                'version_code' => 'string(100)' ,
-                'is_forced' =>  'tinyint(1) not null',
-                'url' => 'string(100) not null' ,
-                'md5' => 'string(100) default null' ,
+                'version' => 'string(100) not null',
+                'version_code' => 'string(100)',
+                'is_forced' => 'tinyint(1) not null',
+                'url' => 'string(100) not null',
+                'md5' => 'string(100) default null',
                 'status' => 'tinyint(1)',
                 'description' => 'text',
                 'created_at' => 'integer(11) not null',
                 'updated_at' => 'integer(11) not null'
             ])->execute();
-            $db->createCommand()->insert('tb_rom_release', [
+            $db->createCommand()->insert('rom_release', [
                 'version' => '1.0',
                 'version_code' => '版本代号',
                 'is_forced' => 1,
