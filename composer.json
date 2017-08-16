@@ -13,11 +13,17 @@
   "require": {
     "yiisoft/yii2": "*",
     "kartik-v/yii2-widget-fileinput": "^1.0",
-    "mongosoft/yii2-upload-behavior": "^0.1"
+    "mongosoft/yii2-upload-behavior": "^0.1",
+    "graychen/generatestring": "dev-master"
+  },
+  "require-dev": {
+    "fzaninotto/faker": "^1.6",
+    "phpunit/phpunit": "4.8.1"
   },
   "autoload": {
     "psr-4": {
-      "zacksleo\\yii2\\romrelease\\": "src"
+      "zacksleo\\yii2\\romrelease\\": "src",
+      "zacksleo\\yii2\\romrelease\\tests\\": "tests"
     }
   }
 }
