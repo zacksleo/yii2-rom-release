@@ -5,6 +5,7 @@
  * Date: 2017/8/11
  * Time: 上午11:15
  */
+
 namespace zacksleo\yii2\romrelease\tests;
 
 use zacksleo\yii2\romrelease\tests\TestCase as TestCase;
@@ -14,16 +15,17 @@ use yii;
 class RomReleaseControllerTest extends TestCase
 {
     public $romrelease;
+
     public function setUp()
     {
         parent::setUp();
-        $this->romrelease=$this->create();
+        $this->romrelease = $this->create();
     }
 
     public function testCreate()
     {
         $data = [
-            'RomRelease'=> [
+            'RomRelease' => [
                 'version' => '1.0',
                 'version_code' => '版本代号',
                 'is_forced' => 1,
@@ -32,7 +34,7 @@ class RomReleaseControllerTest extends TestCase
                 'description' => '发布说明'
             ]
         ];
-        Yii::$app->request->bodyParams= $data;
+        Yii::$app->request->bodyParams = $data;
         $response = Yii::$app->runAction('romrelease/romrelease/create');
         $this->delete($response->id);
     }
@@ -40,7 +42,7 @@ class RomReleaseControllerTest extends TestCase
     public function testUpdate()
     {
         $data = [
-            'RomRelease'=> [
+            'RomRelease' => [
                 'version' => '1.0',
                 'version_code' => '版本代号',
                 'is_forced' => 1,
@@ -63,15 +65,15 @@ class RomReleaseControllerTest extends TestCase
 
     public function delete($id)
     {
-        $response = Yii::$app->runAction('romrelease/romrelease/delete', ['id'=>$id]);
-        $this->assertTrue($response > 0);
+        $reponse = Yii::$app->runAction('romrelease/romrelease/delete', ['id' => $id]);
+        $this->assertTrue($reponse > 0);
     }
 
 
     private function create()
     {
         $data = [
-            'RomRelease'=> [
+            'RomRelease' => [
                 'version' => '1.0',
                 'version_code' => '版本代号',
                 'is_forced' => 1,
