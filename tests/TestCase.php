@@ -70,6 +70,10 @@ class TestCase extends \PHPUnit_Framework_TestCase
                         ]
                     ]
                 ],
+                'user' => [
+                    'identityClass' => 'app\models\User', //<= this
+                    'enableAutoLogin' => true,
+                ],
             ],
             'modules' => [
                 'romrelease' => [

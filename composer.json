@@ -25,5 +25,11 @@
       "zacksleo\\yii2\\romrelease\\": "src",
       "zacksleo\\yii2\\romrelease\\tests\\": "tests"
     }
-  }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ]
 }
