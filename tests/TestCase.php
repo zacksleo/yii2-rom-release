@@ -1,5 +1,6 @@
 <?php
 namespace yii\web;
+
 /**
  * Mock for the is_uploaded_file() function for web classes.
  * @return boolean
@@ -67,6 +68,10 @@ class TestCase extends \PHPUnit_Framework_TestCase
                             'class' => 'yii\i18n\PhpMessageSource',
                         ]
                     ]
+                ],
+                'user' => [
+                    'identityClass' => 'app\models\User', //<= this
+                    'enableAutoLogin' => true,
                 ],
             ],
             'modules' => [
