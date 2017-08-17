@@ -57,6 +57,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
                 'db' => [
                     'class' => 'yii\db\Connection',
                     'dsn' => 'sqlite::memory:',
+                    'tablePrefix' => 'tb_'
                 ],
                 'i18n' => [
                     'translations' => [
