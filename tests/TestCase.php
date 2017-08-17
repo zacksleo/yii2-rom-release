@@ -56,7 +56,9 @@ class TestCase extends \PHPUnit_Framework_TestCase
             'components' => [
                 'db' => [
                     'class' => 'yii\db\Connection',
-                    'dsn' => 'sqlite::memory:',
+                    'dsn' => 'mysql:host=localhost:3306;dbname=test',
+                    'username'=> 'root',
+                    'password'=> '',
                     'tablePrefix' => 'tb_'
                 ],
                 'i18n' => [
