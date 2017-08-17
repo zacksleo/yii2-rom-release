@@ -6,13 +6,13 @@
  * Time: 上午11:15
  */
 namespace zacksleo\yii2\romrelease\tests;
+
 use zacksleo\yii2\romrelease\tests\TestCase as TestCase;
 use yii\web\UploadedFile;
 use yii;
 
 class RomReleaseControllerTest extends TestCase
 {
-
     public $romrelease;
     public function setUp()
     {
@@ -63,8 +63,8 @@ class RomReleaseControllerTest extends TestCase
 
     public function delete($id)
     {
-        $reponse = Yii::$app->runAction('romrelease/romrelease/delete',['id'=>$id]);
-        $this->assertTrue($reponse > 0);
+        $response = Yii::$app->runAction('romrelease/romrelease/delete', ['id'=>$id]);
+        $this->assertTrue($response > 0);
     }
 
 

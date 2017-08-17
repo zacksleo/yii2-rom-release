@@ -24,7 +24,6 @@ class RomReleaseTest extends TestCase
     {
         parent::setUp();
         $this->model=new RomRelease();
-
     }
 
     protected function tearDown()
